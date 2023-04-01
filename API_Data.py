@@ -27,7 +27,17 @@ def get_api_data():
             "url": url}
 
 
-data = get_api_data()
-print(data)
+def get_image():
+    img_site = get_api_data()
+    img_url = img_site["url"]
+    res = r.get(img_url, headers)
+    with open("assets/images/image.jpg", "wb") as file:
+        file.write(res.content)
+
+
+if __name__ == "__main__":
+    data = get_api_data()
+    print(data["title"])
+    get_image()
 
 
